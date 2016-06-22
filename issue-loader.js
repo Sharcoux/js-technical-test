@@ -32,7 +32,7 @@ function parseData(json, callback) {
     var words = wordCount(content);
 
     //update data tables
-    authors[issueAuthor] = {"words":words,"avatar":avatar}
+    authors[author] = {"words":words,"avatar":avatar}
     posts.push({"author":author,"content":content});
     
     //load comments
