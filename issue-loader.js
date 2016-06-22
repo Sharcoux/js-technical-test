@@ -15,7 +15,20 @@ function loadIssue(url) {
 
 //Display an issue given the data loaded
 function displayIssue(id, title, author, authors, posts) {
-    //TODO
+    //Display the title
+    $("#issue-title").html(title+" #"+id);
+    
+    //Display thread title
+    $("#issue-thread").html("<h3 id='thread-title' class='title'>Issue opened by "+author+"</h3>");
+    
+    //Display each post
+    for(var i=0; i<posts.length; i++) {
+        var post = posts[i];
+        //class for author posts
+        var authorClass = post.author==author ? " author" : "";
+        var avatar = authors[post.author].avatar;
+        $("#issue-thread").append("<div id='"+post.id+"' class='comment "+post.author+"-comment"+authorClass+"'><div class='avatar'><img src='"+avatar+"' alt='"+post.author+"'></div><div class='triangle'></div><div class='content'>"+post.content+"</div></div>");
+    }
 }
 
 //gets general data from github API
@@ -33,7 +46,7 @@ function parseData(json, callback) {
 
     //update data tables
     authors[author] = {"words":words,"avatar":avatar}
-    posts.push({"author":author,"content":content});
+    posts.push({"author":author,"content":content,"id":id});
     
     //load comments
     $.get(json.comments_url).done(function(data) {
@@ -61,7 +74,7 @@ function parseComments(json) {
         
         //update data tables
         authors[author].words += words;
-        posts.push({"author":author,"content":content});
+        posts.push({"author":author,"content":content,"id":id});
         
     }
 }
