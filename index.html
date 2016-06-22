@@ -16,15 +16,17 @@
                     $.getScript( "issue-loader.js", function() {
                         //For testing
                         //loadIssue("https://api.github.com/repos/nodejs/node/issues/6867");
-                        
-                        $("#url-button").on("click",function() {
+                        var loadIss = function() {
                             loadIssue($("#url-input").val(), function() {
                                 $("#url-request").hide("highlight",500, function() {
                                     $("#issue-container").show("clip",1000);
                                     drawChart(authors,"issue-chart");//HACK to correct the width of the chart after call to 'show'
                                 });
                             });
-                        });
+                        }
+                        
+                        $("#url-button").on("click",loadIss);
+                        $("#url-input").keypress(function(e) {if(e.which == 13) {loadIss();}});
                     });
                 });
             });
