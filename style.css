@@ -99,3 +99,11 @@ img {
     border-left: 0.7em solid transparent;
 }
 
+/* Adaptation petite taille */
+@media all and (max-width: 50em) {
+#issue-chart {
+    width: 100%;
+}
+#issue-thread {
+    width: 100%;
+}
