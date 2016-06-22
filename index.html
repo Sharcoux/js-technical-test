@@ -9,12 +9,11 @@
     <!-- charts -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $.getScript( "issue-loader.js", function() {
-                $.getScript( "https://www.gstatic.com/charts/loader.js", function() {
-                    $.getScript( "charts.js", function() {
+            $.getScript( "https://www.gstatic.com/charts/loader.js", function() {
+                $.getScript( "charts.js", function() {
+                    $.getScript( "issue-loader.js", function() {
                         //For testing
                         loadIssue("https://api.github.com/repos/nodejs/node/issues/6867");
-                        google.charts.setOnLoadCallback(function() {drawChart(authors,"issue-chart");});
                     });
                 });
             });

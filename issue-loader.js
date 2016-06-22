@@ -29,6 +29,9 @@ function displayIssue(id, title, author, authors, posts) {
         var avatar = authors[post.author].avatar;
         $("#issue-thread").append("<div id='"+post.id+"' class='comment "+post.author+"-comment"+authorClass+"'><div class='avatar'><img src='"+avatar+"' alt='"+post.author+"'></div><div class='triangle'></div><div class='content'>"+post.content+"</div></div>");
     }
+    
+    //Display chart
+    drawChart(authors,"issue-chart");
 }
 
 //gets general data from github API
