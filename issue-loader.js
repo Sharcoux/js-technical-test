@@ -3,13 +3,16 @@ var authors = {};//Contains per author data
 var posts = [];//Contains every posts
 
 //Load and display a new issue
-function loadIssue(url) {
+function loadIssue(url, callback) {
     $.get(url).done(function(data) {
         //Clear data
         authors = {};
         posts = [];
         //Load and display issue
-        parseData(data, displayIssue);
+        parseData(data, function(id, title, author, authors, posts, commentsURL) {
+            displayIssue(id, title, author, authors, posts, commentsURL);
+            callback();//Done displaying issue
+        });
     });
 }
 
