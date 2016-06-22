@@ -19,14 +19,10 @@
                         
                         $("#url-button").on("click",function() {
                             loadIssue($("#url-input").val(), function() {
-                                if(posts.length>0) {
-                                    $("#url-request").hide("highlight",500, function() {
-                                        $("#issue-container").show("clip",1000);
-                                        drawChart(authors,"issue-chart");//HACK to correct the width of the chart after call to 'show'
-                                    });
-                                } else {
-                                    alert("No issue found with this url");
-                                }
+                                $("#url-request").hide("highlight",500, function() {
+                                    $("#issue-container").show("clip",1000);
+                                    drawChart(authors,"issue-chart");//HACK to correct the width of the chart after call to 'show'
+                                });
                             });
                         });
                     });

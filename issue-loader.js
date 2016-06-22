@@ -13,6 +13,8 @@ function loadIssue(url, callback) {
             displayIssue(id, title, author, authors, posts, commentsURL);
             callback();//Done displaying issue
         });
+    }).fail(function() {
+        alert("No issue found with this url");
     });
 }
 
