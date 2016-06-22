@@ -39,6 +39,15 @@ function displayIssue(id, title, author, authors, posts) {
         var avatar = authors[participant].avatar;
         $("#participant-list").append("<li id='"+participant+"' class='participant'><div class='avatar'><img src='"+avatar+"' alt='' /></div><div class='content participant-name'>"+participant+"</div></li>");
     }
+    
+    //Animations
+    $(".participant").on("click",function() {
+        var name = $(this).find(".content").first();
+        console.log(name.html());
+        if(!name.hasClass("stroke")) {name.addClass("stroke");}
+        else {name.removeClass("stroke");}
+        $("."+$(this).attr('id')+"-comment").toggle('blind',1000);
+    });
 }
 
 //gets general data from github API

@@ -1,3 +1,13 @@
+/* Animations */
+@keyframes jumping {
+	from {top: 0;}
+	to {top: -3px;color:#ffc000;}
+}
+@keyframes back {
+	from {top: -3px;color:#ffc000;}
+	to {top: 0;color:inherit;}
+}
+
 /* Global values */
 html, body {
     padding: 0; margin: 0; width: 100%; 
@@ -5,14 +15,11 @@ html, body {
     word-wrap:break-word;
 }
 
-img {
-    width: 100%;
-}
+img {width: 100%;}
+ul {list-style: none;margin: 0;padding: 0;}
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.stroke {
+    text-decoration: line-through !important;
 }
 
 .avatar img {
@@ -23,6 +30,7 @@ ul {
 /* Main part */
 #issue-content {
     text-align: right;
+    display: flex;
 }
 
 #issue-title {
@@ -66,7 +74,14 @@ ul {
 }
 
 .participant {
+    position: relative;text-decoration:none;color:#000;
+	animation: back 0.3s 0s 1 forwards;
     vertical-align: middle;
+    cursor: pointer;
+}
+
+.participant:hover {
+	animation: jumping 0.3s 0s 1 forwards;
 }
 
 .participant .avatar{
@@ -76,6 +91,12 @@ ul {
 
 .participant > div {
     display:inline-block;
+}
+
+.participant .content {
+    vertical-align: middle;
+    position: relative;
+    bottom: 0.5em;
 }
 
 /* Comments */
@@ -135,6 +156,9 @@ ul {
 
 /* Adaptation small size */
 @media all and (max-width: 50em) {
+#issue-content {
+    display: block;
+}
 #issue-sider {
     width: 100%;
 }
