@@ -6,11 +6,17 @@
     <!-- jQuery -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     
+    <!-- charts -->
     <script type="text/javascript">
         $(document).ready(function() {
             $.getScript( "issue-loader.js", function() {
-                //For testing
-                loadIssue("https://api.github.com/repos/nodejs/node/issues/6867");
+                $.getScript( "https://www.gstatic.com/charts/loader.js", function() {
+                    $.getScript( "charts.js", function() {
+                        //For testing
+                        loadIssue("https://api.github.com/repos/nodejs/node/issues/6867");
+                        google.charts.setOnLoadCallback(function() {drawChart(authors,"issue-chart");});
+                    });
+                });
             });
         });
     </script>
