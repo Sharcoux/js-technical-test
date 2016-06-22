@@ -14,7 +14,7 @@ function loadIssue(url) {
 }
 
 //Display an issue given the data loaded
-function displayIssue(id, title, author, authors, posts) {
+function displayIssue(id, title, author, authors, posts, commentsURL) {
     //Display the title
     $("#issue-title").html(title+" #"+id);
     
@@ -48,6 +48,11 @@ function displayIssue(id, title, author, authors, posts) {
         else {name.removeClass("stroke");}
         $("."+$(this).attr('id')+"-comment").toggle('blind',1000);
     });
+    
+    //Add a reply button
+    $("#issue-thread").append("<div id='reply'><form method='POST' id='reply-form'><textarea id='reply-content' placeholder='Leave a reply...' type='text'></textarea><br/><input id='reply-button' type='submit' class='button' /></form></div>");
+    $("#reply-button").on("click",function() {$.post(commentsURL,'{"body":"'+$("#reply-content").val()+'"}');});
+    $('#reply-content').on( 'change keyup keydown paste cut', function (){$(this).height(this.scrollHeight);});//Resize textarea as needed
 }
 
 //gets general data from github API
@@ -70,7 +75,7 @@ function parseData(json, callback) {
     //load comments
     $.get(json.comments_url).done(function(data) {
         parseComments(data);
-        callback(issueId, issueTitle, author, authors, posts);//Done reading data
+        callback(issueId, issueTitle, author, authors, posts, json.comments_url);//Done reading data
     });
 }
 
