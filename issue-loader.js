@@ -83,4 +83,5 @@ function parseComments(json) {
 function wordCount(sentence) {
     var matches = sentence.match(/(\w+)/g);//Group words
     var words = (matches ? matches.length : 0);//Matches is null for empty or white string
+    return words;
 }
