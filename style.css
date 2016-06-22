@@ -1,12 +1,26 @@
+/* Global values */
 html, body {
     padding: 0; margin: 0; width: 100%; 
     font-family: 'Cabin', sans-serif;
+    word-wrap:break-word;
 }
 
 img {
     width: 100%;
 }
 
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.avatar img {
+    border-radius: 50%;
+    border: #C0C0C0 solid 1px;
+}
+
+/* Main part */
 #issue-content {
     text-align: right;
 }
@@ -20,9 +34,12 @@ img {
     margin: 0;
 }
 
-#issue-chart {
+#issue-sider {
     display: inline-block;
     width: 40%;
+    vertical-align: top;
+}
+#issue-chart {
     vertical-align: top;
     text-align: center;
 }
@@ -33,7 +50,7 @@ img {
     border-left: #d2dce4 solid 1px;
 }
 
-#thread-title {
+#issue-content .title {
     color: #6e7882;
     text-align: left;
     padding: 2em;
@@ -41,6 +58,27 @@ img {
     font-size: 1.3em;
 }
 
+/* participants list */
+#issue-participants ul {
+    display: inline-block;
+    text-align: left;
+    padding-right: 2em;
+}
+
+.participant {
+    vertical-align: middle;
+}
+
+.participant .avatar{
+    width: 1.5em;
+    padding: 0.5em;
+}
+
+.participant > div {
+    display:inline-block;
+}
+
+/* Comments */
 .comment {
     direction: rtl;
     text-align: right;
@@ -63,10 +101,6 @@ img {
     width: 3em;
     padding: 1em;
     padding-left: 0;
-}
-.comment .avatar img {
-    border-radius: 50%;
-    border: #C0C0C0 solid 1px;
 }
 
 .author .avatar {
@@ -99,9 +133,9 @@ img {
     border-left: 0.7em solid transparent;
 }
 
-/* Adaptation petite taille */
+/* Adaptation small size */
 @media all and (max-width: 50em) {
-#issue-chart {
+#issue-sider {
     width: 100%;
 }
 #issue-thread {

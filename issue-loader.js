@@ -32,6 +32,13 @@ function displayIssue(id, title, author, authors, posts) {
     
     //Display chart
     drawChart(authors,"issue-chart");
+    
+    //Display participant names
+    $("#issue-participants").html("<h3 class='title'>Participants</h3><ul id='participant-list'></ul>");
+    for(participant in authors) {
+        var avatar = authors[participant].avatar;
+        $("#participant-list").append("<li id='"+participant+"' class='participant'><div class='avatar'><img src='"+avatar+"' alt='' /></div><div class='content participant-name'>"+participant+"</div></li>");
+    }
 }
 
 //gets general data from github API
