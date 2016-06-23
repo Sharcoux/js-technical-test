@@ -17,7 +17,8 @@
                         //For testing
                         //loadIssue("https://api.github.com/repos/nodejs/node/issues/6867");
                         var loadIss = function() {
-                            loadIssue($("#url-input").val(), function() {
+                            var url = "https://api.github.com/repos/"+$("#name-input").val()+"/"+$("#project-input").val()+"/issues/"+$("#id-input").val();
+                            loadIssue(url, function() {
                                 $("#url-request").hide("highlight",500, function() {
                                     $("#issue-container").show("clip",1000);
                                     drawChart(authors,"issue-chart");//HACK to correct the width of the chart after call to 'show'
@@ -39,7 +40,9 @@
     <div id="url-request">
         <div id="icon" class="image"><img src="https://assets-cdn.github.com/images/modules/open_graph/github-mark.png"></div>
         <div id="url">
-            <input id="url-input" type="text" class="input" placeholder="Enter issue url" /><br>
+            <input id="name-input" type="text" class="input" name="name" placeholder="Github owner name" /><br>
+            <input id="project-input" type="text" class="input" name="project" placeholder="Project name" /><br>
+            <input id="id-input" type="text" class="input" id="id" placeholder="Issue number" /><br>
             <input id="url-button" type="submit" value="Display" class="input" />
         </div>
     </div>
